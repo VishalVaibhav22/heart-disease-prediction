@@ -1,0 +1,15 @@
+# Verified against Python 3.13.3 on Windows.
+# pgmpy 1.0 renamed the classes this notebook uses (DiscreteBayesianNetwork, BIC);
+# on pgmpy 0.1.x they are BayesianNetwork and BicScore, so the imports will fail.
+pgmpy>=1.0.0
+
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.4
+matplotlib>=3.8
+seaborn>=0.13
+networkx>=3.1
+
+# Needed only to open and run the notebook itself.
+jupyterlab>=4.0
+ipykernel>=6.29

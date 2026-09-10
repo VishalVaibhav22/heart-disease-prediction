@@ -1,0 +1,25 @@
+# Raw UCI data files, not redistributed here.
+# The notebook downloads them into data/ automatically on first run.
+data/*.data
+
+# Local working copy of the pre-cleanup notebook and the scripts used to
+# rebuild the final one. Kept on disk for reference, not part of the project.
+_archive/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Environments
+venv/
+.venv/
+env/
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
