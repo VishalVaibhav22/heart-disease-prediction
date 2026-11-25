@@ -1,0 +1,44 @@
+table LikelihoodWeighting
+	lineageTag: 6bc462f5-df1f-5470-9748-443a57614a4a
+
+	column Number_of_Samples
+		dataType: int64
+		formatString: #,0
+		lineageTag: afa1e93d-4d3a-5449-abe2-c5cb2c88088a
+		summarizeBy: none
+		sourceColumn: Number_of_Samples
+
+		annotation SummarizationSetBy = Automatic
+
+	column Likelihood_Weighting_Estimate
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 3497524b-e42f-5c5d-83fa-8f9504464391
+		summarizeBy: none
+		sourceColumn: Likelihood_Weighting_Estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Absolute_Error
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 79e75419-324f-511f-8fac-43af40e06a63
+		summarizeBy: none
+		sourceColumn: Absolute_Error
+
+		annotation SummarizationSetBy = Automatic
+
+	partition LikelihoodWeighting = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_likelihood_weighting.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Number_of_Samples", Int64.Type}, {"Likelihood_Weighting_Estimate", type number}, {"Absolute_Error", type number}})
+				in
+					#"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

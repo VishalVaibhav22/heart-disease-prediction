@@ -1,0 +1,5 @@
+Stage,Evidence_Count,Mean_P_Disease_True_1,Mean_P_Disease_True_0,Test_Accuracy,ROC_AUC
+Demographics,2,0.6093,0.4755,0.6576,0.6774
++ Consultation,5,0.7398,0.3507,0.8043,0.862
++ Exercise test,8,0.7593,0.2978,0.788,0.8785
+Full record,13,0.7684,0.2764,0.7989,0.8879

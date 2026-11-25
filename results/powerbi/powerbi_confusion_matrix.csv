@@ -1,0 +1,25 @@
+Model,Threshold,Actual,Predicted,Count
+Logistic Regression,0.5,No Disease,No Disease,60
+Logistic Regression,0.5,No Disease,Disease,22
+Logistic Regression,0.5,Disease,No Disease,15
+Logistic Regression,0.5,Disease,Disease,87
+Random Forest,0.5,No Disease,No Disease,62
+Random Forest,0.5,No Disease,Disease,20
+Random Forest,0.5,Disease,No Disease,17
+Random Forest,0.5,Disease,Disease,85
+Naive Bayes,0.5,No Disease,No Disease,66
+Naive Bayes,0.5,No Disease,Disease,16
+Naive Bayes,0.5,Disease,No Disease,17
+Naive Bayes,0.5,Disease,Disease,85
+MLP Neural Net,0.5,No Disease,No Disease,54
+MLP Neural Net,0.5,No Disease,Disease,28
+MLP Neural Net,0.5,Disease,No Disease,19
+MLP Neural Net,0.5,Disease,Disease,83
+Domain Expert BN,0.5,No Disease,No Disease,65
+Domain Expert BN,0.5,No Disease,Disease,17
+Domain Expert BN,0.5,Disease,No Disease,21
+Domain Expert BN,0.5,Disease,Disease,81
+BN Hill Climb + BIC,0.5,No Disease,No Disease,60
+BN Hill Climb + BIC,0.5,No Disease,Disease,22
+BN Hill Climb + BIC,0.5,Disease,No Disease,15
+BN Hill Climb + BIC,0.5,Disease,Disease,87

@@ -1,0 +1,60 @@
+table ConfusionMetrics
+	lineageTag: 2dee0e90-ca55-4674-9afb-3513cbe89362
+
+	column Model
+		dataType: string
+		lineageTag: 9a0528cd-8e7d-4ea5-9e90-92327396adee
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threshold
+		dataType: double
+		lineageTag: b25e5709-75bf-414c-8ef3-96874cf69912
+		summarizeBy: sum
+		sourceColumn: Threshold
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Actual
+		dataType: string
+		lineageTag: 30c9ec05-2226-4477-97a8-fd8916281388
+		summarizeBy: none
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Predicted
+		dataType: string
+		lineageTag: df0d7ede-7ef6-4054-8972-4f89eb3459b8
+		summarizeBy: none
+		sourceColumn: Predicted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Count
+		dataType: int64
+		formatString: 0
+		lineageTag: 18138dd7-49d7-41d0-b883-103c8922dc22
+		summarizeBy: sum
+		sourceColumn: Count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ConfusionMetrics = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_confusion_matrix.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Model", type text}, {"Threshold", type number}, {"Actual", type text}, {"Predicted", type text}, {"Count", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

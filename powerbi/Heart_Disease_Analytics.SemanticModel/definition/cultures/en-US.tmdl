@@ -1,0 +1,326 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "evidencestages.evidence_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EvidenceStages",
+			          "ConceptualProperty": "Evidence_Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Evidence Items": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "evidencestages.test_accuracy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EvidenceStages",
+			          "ConceptualProperty": "Test_Accuracy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Test Accuracy": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "evidencestages.roc_auc": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "EvidenceStages",
+			          "ConceptualProperty": "ROC_AUC"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ROC-AUC": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.threshold_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Threshold_Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Threshold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.threshold_configurations": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Threshold Configurations"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Threshold Configurations": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.utilityoptimal_threshold": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Utility-Optimal Threshold"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Utility-Optimal Threshold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.fn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "FN"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "False Negatives": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.fp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "FP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "False Positives": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.total_reward": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Total_Reward"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Total Reward": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.reward_per_patient": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Reward_Per_Patient"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Reward / Patient": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "thresholdcomparison.best_reward_per_patient": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "ThresholdComparison",
+			          "ConceptualProperty": "Best Reward per Patient"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Best Reward per Patient": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "sequentialdiagnosis.step": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SequentialDiagnosis",
+			          "ConceptualProperty": "Step"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Step": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "sequentialdiagnosis.patient_label": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SequentialDiagnosis",
+			          "ConceptualProperty": "Patient_Label"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Patient": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "sequentialdiagnosis.test_ordered": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SequentialDiagnosis",
+			          "ConceptualProperty": "Test_Ordered"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Next Test": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "likelihoodweighting.number_of_samples": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "LikelihoodWeighting",
+			          "ConceptualProperty": "Number_of_Samples"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sample Count": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

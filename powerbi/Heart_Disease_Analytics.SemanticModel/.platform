@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Heart_Disease_Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e96cf761-0625-4429-aede-e2c149cac1a7"
+  }
+}

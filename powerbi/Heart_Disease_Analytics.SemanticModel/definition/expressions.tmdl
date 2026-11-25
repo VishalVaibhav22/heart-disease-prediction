@@ -1,0 +1,5 @@
+expression AnalysisDataFolder = "C:\Users\Vishal\OneDrive - Thapar University\Desktop\heart-disease-prediction-1\results\powerbi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 62b8a476-25c4-499a-84c6-474b84963636
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,96 @@
+table ModelMetrics
+	lineageTag: 0bb16b6a-bc24-431a-abb9-b4c1c0c4144c
+
+	measure 'Best Performing Model' =
+			
+			CONCATENATEX(
+			    TOPN(
+			        1,
+			        ModelMetrics,
+			        ModelMetrics[ROC_AUC], DESC,
+			        ModelMetrics[Model], ASC
+			    ),
+			    ModelMetrics[Model],
+			    ", "
+			)
+		lineageTag: eeab994f-9f22-4d2e-8e45-7b00bbd1ff0b
+
+	measure 'Best ROC-AUC' =
+			
+			MAX(ModelMetrics[ROC_AUC])
+		formatString: 0.000
+		lineageTag: 91733791-70b0-4b2d-b1ef-2c67907242ea
+
+	measure 'Models Compared' =
+			
+			DISTINCTCOUNT(ModelMetrics[Model])
+		formatString: 0
+		lineageTag: 37875340-3183-4f4c-9f8b-bc64c37c4a24
+
+	column Model
+		dataType: string
+		lineageTag: 0c3b5d00-8bfd-4922-828d-55fc210dc217
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accuracy
+		dataType: double
+		formatString: 0.00%
+		lineageTag: e930965b-2340-4b60-a00e-397b2566c802
+		summarizeBy: none
+		sourceColumn: Accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precision
+		dataType: double
+		formatString: 0.00%
+		lineageTag: dcbcba01-91a5-41fb-b9f9-1f02ee5d2fa7
+		summarizeBy: none
+		sourceColumn: Precision
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recall
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 6141e5df-5e54-4e43-9a78-a851cca9e09d
+		summarizeBy: none
+		sourceColumn: Recall
+
+		annotation SummarizationSetBy = Automatic
+
+	column F1
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 33a0baa4-dfad-4bef-adaf-dfe928e02042
+		summarizeBy: none
+		sourceColumn: F1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROC_AUC
+		dataType: double
+		formatString: 0.000
+		lineageTag: acdb8339-1ab7-4dec-bc8f-dbe0f78f67a8
+		summarizeBy: none
+		sourceColumn: ROC_AUC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ModelMetrics = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_model_metrics.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Model", type text}, {"Accuracy", type number}, {"Precision", type number}, {"Recall", type number}, {"F1", type number}, {"ROC_AUC", type number}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

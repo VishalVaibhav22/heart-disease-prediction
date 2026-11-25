@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Patients","ModelMetrics","ConfusionMetrics","ThresholdComparison","EvidenceStages","VOIRanking","SequentialDiagnosis","LikelihoodWeighting","AnalysisDataFolder"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Patients
+ref table ModelMetrics
+ref table ConfusionMetrics
+ref table ThresholdComparison
+ref table EvidenceStages
+ref table VOIRanking
+ref table SequentialDiagnosis
+ref table LikelihoodWeighting
+
+ref cultureInfo en-US
+

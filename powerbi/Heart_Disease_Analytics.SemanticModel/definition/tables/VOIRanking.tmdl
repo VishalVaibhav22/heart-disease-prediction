@@ -1,0 +1,43 @@
+table VOIRanking
+	lineageTag: 0b8dc61c-5f4e-531a-beaf-08824672b13c
+
+	column Feature
+		dataType: string
+		lineageTag: dda0dffc-e065-59dc-a9ef-c8b6d171db22
+		summarizeBy: none
+		sourceColumn: Feature
+
+		annotation SummarizationSetBy = Automatic
+
+	column Information_Gain_Bits
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 2b23838c-bac3-506d-adaf-89e612b0645f
+		summarizeBy: none
+		sourceColumn: Information_Gain_Bits
+
+		annotation SummarizationSetBy = Automatic
+
+	column VPI
+		dataType: double
+		formatString: 0.0000000000000000
+		lineageTag: 1c6f6c3b-94f0-5271-bfbe-b2a2e38ad8a5
+		summarizeBy: none
+		sourceColumn: VPI
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VOIRanking = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_voi_ranking.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Feature", type text}, {"Information_Gain_Bits", type number}, {"VPI", type number}})
+				in
+					#"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

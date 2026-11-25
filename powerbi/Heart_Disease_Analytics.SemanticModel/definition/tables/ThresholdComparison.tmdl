@@ -1,0 +1,134 @@
+table ThresholdComparison
+	lineageTag: 55190287-33a9-511a-90a3-99ad4eaeba5a
+
+	measure 'Utility-Optimal Threshold' =
+			MINX(
+				FILTER(
+					ALL(ThresholdComparison),
+					CONTAINSSTRING(ThresholdComparison[Threshold], "utility-optimal")
+				),
+				ThresholdComparison[Threshold_Value]
+			)
+		formatString: 0.000
+		lineageTag: e43d1134-072f-5f41-a8b3-e07a77909c34
+
+	measure 'Best Reward per Patient' = MAX(ThresholdComparison[Reward_Per_Patient])
+		formatString: 0.000
+		lineageTag: c218a35b-d6c4-5433-a00a-a4d7a4c02a47
+
+	measure 'Threshold Configurations' = COUNTROWS(ThresholdComparison)
+		formatString: 0
+		lineageTag: 9d7e9509-482a-5983-beff-5928e3080ded
+
+	column Model
+		dataType: string
+		lineageTag: 5e67679f-a60d-5a0a-b1aa-3ada29b20ae0
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threshold
+		dataType: string
+		lineageTag: 78abe035-dc1c-5382-aa6d-188f23645e3a
+		summarizeBy: none
+		sourceColumn: Threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column Accuracy
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 7be53001-cd20-5afb-971e-014154ba96a8
+		summarizeBy: none
+		sourceColumn: Accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recall
+		dataType: double
+		formatString: 0.00%
+		lineageTag: c28f7fb6-790c-5782-8458-b782cb11b10e
+		summarizeBy: none
+		sourceColumn: Recall
+
+		annotation SummarizationSetBy = Automatic
+
+	column Precision
+		dataType: double
+		formatString: 0.00%
+		lineageTag: b51085db-ebdf-52f5-b092-93f31ef90897
+		summarizeBy: none
+		sourceColumn: Precision
+
+		annotation SummarizationSetBy = Automatic
+
+	column FN
+		dataType: int64
+		formatString: 0
+		lineageTag: 565f9582-08a8-5f54-9134-fc810b1148fa
+		summarizeBy: none
+		sourceColumn: FN
+
+		annotation SummarizationSetBy = Automatic
+
+	column FP
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d171ee7-d5e2-5a00-951a-5c104444fc8d
+		summarizeBy: none
+		sourceColumn: FP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Reward
+		dataType: int64
+		formatString: 0
+		lineageTag: 21401568-b29d-57fb-ba26-e47bc4170f36
+		summarizeBy: none
+		sourceColumn: Total_Reward
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reward_Per_Patient
+		dataType: double
+		formatString: 0.000
+		lineageTag: 3379b617-bfb6-5783-bba3-0acf1f7a1e80
+		summarizeBy: none
+		sourceColumn: Reward_Per_Patient
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threshold_Value
+		dataType: double
+		isHidden
+		formatString: 0.000
+		lineageTag: b9cd0a8e-9f18-539b-8441-b6fb4c1433b5
+		summarizeBy: none
+		sourceColumn: Threshold_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Threshold_Display
+		dataType: string
+		lineageTag: fac6ebd3-f9c5-4b19-8881-21f9f65f3b47
+		summarizeBy: none
+		sourceColumn: Threshold_Display
+		sortByColumn: Threshold_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ThresholdComparison = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_threshold_comparison.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Model", type text}, {"Threshold", type text}, {"Accuracy", type number}, {"Recall", type number}, {"Precision", type number}, {"FN", Int64.Type}, {"FP", Int64.Type}, {"Total_Reward", Int64.Type}, {"Reward_Per_Patient", type number}}),
+					#"Added Threshold Value" = Table.AddColumn(#"Changed Type", "Threshold_Value", each Number.FromText(Text.BeforeDelimiter([Threshold], " "), "en-US"), type number),
+					#"Added Threshold Display" = Table.AddColumn(#"Added Threshold Value", "Threshold_Display", each if Text.Contains([Threshold], "utility-optimal", Comparer.OrdinalIgnoreCase) then "0.167 – Utility Optimal" else if Text.Contains([Threshold], "accuracy-oriented", Comparer.OrdinalIgnoreCase) then "0.5 – Accuracy Oriented" else error ("Unexpected threshold label: " & [Threshold]), type text)
+				in
+					#"Added Threshold Display"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,82 @@
+table EvidenceStages
+	lineageTag: 85bd7069-a683-5603-8ca7-a6470c74303e
+
+	column Stage
+		dataType: string
+		lineageTag: 09734723-afa0-5955-8ee3-8568f385c30b
+		summarizeBy: none
+		sourceColumn: Stage
+		sortByColumn: Stage_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column Evidence_Count
+		dataType: int64
+		formatString: 0
+		lineageTag: a2e4648d-d6a9-54ed-8b54-4798f7af4086
+		summarizeBy: none
+		sourceColumn: Evidence_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mean_P_Disease_True_1
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 9b2b7956-36ba-5c48-9f8b-8b5a6fcbae57
+		summarizeBy: none
+		sourceColumn: Mean_P_Disease_True_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mean_P_Disease_True_0
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 0f392e21-3a64-5125-9a8c-f227efe42b24
+		summarizeBy: none
+		sourceColumn: Mean_P_Disease_True_0
+
+		annotation SummarizationSetBy = Automatic
+
+	column Test_Accuracy
+		dataType: double
+		formatString: 0.00%
+		lineageTag: eb64330c-7df7-5df3-9f9f-6b1423298384
+		summarizeBy: none
+		sourceColumn: Test_Accuracy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ROC_AUC
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 597bd1e4-8983-534a-a64c-907408c58cfc
+		summarizeBy: none
+		sourceColumn: ROC_AUC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stage_Order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e64508d4-9518-55a6-8594-9ab30b41ab1b
+		summarizeBy: none
+		sourceColumn: Stage_Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EvidenceStages = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_evidence_stages.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					#"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					#"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Stage", type text}, {"Evidence_Count", Int64.Type}, {"Mean_P_Disease_True_1", type number}, {"Mean_P_Disease_True_0", type number}, {"Test_Accuracy", type number}, {"ROC_AUC", type number}}),
+					#"Added Stage Order" = Table.AddIndexColumn(#"Changed Type", "Stage_Order", 1, 1, Int64.Type)
+				in
+					#"Added Stage Order"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

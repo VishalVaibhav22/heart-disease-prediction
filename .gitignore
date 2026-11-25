@@ -1,9 +1,7 @@
-# Raw UCI data files, not redistributed here.
-# The notebook downloads them into data/ automatically on first run.
+# UCI source files are downloaded by the notebook and are not redistributed.
 data/*.data
 
-# Local working copy of the pre-cleanup notebook and the scripts used to
-# rebuild the final one. Kept on disk for reference, not part of the project.
+# Local archives and working copies.
 _archive/
 
 # Python
@@ -12,13 +10,20 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 
-# Environments
-venv/
+# Virtual environments and local secrets.
 .venv/
+venv/
 env/
 .env
 
-# OS / editor
+# Power BI backup, cache, and machine-local state.
+*.pbix
+*.pbit
+**/.pbi/
+results/powerbi/powerbi_patients.csv
+results/powerbi/powerbi_sequential_diagnosis.csv
+
+# OS and editor files.
 .DS_Store
 Thumbs.db
 .vscode/

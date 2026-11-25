@@ -1,0 +1,7 @@
+Model,Accuracy,Precision,Recall,F1,ROC_AUC
+Logistic Regression,0.7989,0.7982,0.8529,0.8246,0.8782
+Random Forest,0.7989,0.8095,0.8333,0.8213,0.8812
+Naive Bayes,0.8207,0.8416,0.8333,0.8374,0.8918
+MLP Neural Net,0.7446,0.7477,0.8137,0.7793,0.8599
+Domain Expert BN,0.7935,0.8265,0.7941,0.81,0.885
+BN Hill Climb + BIC,0.7989,0.7982,0.8529,0.8246,0.8879

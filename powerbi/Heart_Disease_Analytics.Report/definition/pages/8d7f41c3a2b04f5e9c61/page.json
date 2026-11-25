@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.3.1/schema.json",
+  "name": "8d7f41c3a2b04f5e9c61",
+  "displayName": "Model Performance",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F2F5F9'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filtere079eae744b97ecc79436df9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ConfusionMetrics"
+              }
+            },
+            "Property": "Threshold"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "cm",
+              "Entity": "ConfusionMetrics",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "cm"
+                          }
+                        },
+                        "Property": "Threshold"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "0.5D"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "isLockedInViewMode": true
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "3a34fd664961bcebb575",
+      "type": "DataFilter"
+    },
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "2f85981eb2d1c657fda7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "63bb6c93775795f5628b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "c1a87664807285992597",
+      "type": "NoFilter"
+    },
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "5fd3f65e4b5ce89491da",
+      "type": "NoFilter"
+    },
+    {
+      "source": "50dce0e7abbccf2508fd",
+      "target": "b7a0917da5b31f248c3e",
+      "type": "NoFilter"
+    }
+  ]
+}

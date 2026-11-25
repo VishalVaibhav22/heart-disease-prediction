@@ -1,0 +1,291 @@
+table Patients
+	lineageTag: 95c99a6e-2d1a-4adc-a2db-4bfdd3c405da
+
+	measure 'Total Patients' =
+			
+			DISTINCTCOUNT(Patients[patient_id])
+		formatString: 0
+		lineageTag: b7d5c1b5-3b25-49e7-ad19-4f8eaa9474c5
+
+	measure 'Disease Cases' =
+			
+			CALCULATE(
+			    [Total Patients],
+			    Patients[heart_disease] = 1
+			)
+		formatString: 0
+		lineageTag: fb121824-17d9-4396-8681-8f2cac088b85
+
+	measure 'Disease Rate' =
+			
+			DIVIDE(
+			    [Disease Cases],
+			    [Total Patients],
+			    0
+			)
+		formatString: 0.0%
+		lineageTag: 7488e84a-517f-4155-9a65-5e89c1f6d498
+
+	measure 'Average Age' =
+			
+			AVERAGE(Patients[age])
+		formatString: 0.0
+		lineageTag: 159a9a02-e30d-45f2-9d47-03bd08033bd4
+
+	column patient_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 376197af-4ef3-478b-8e2c-60ace33c1cd9
+		summarizeBy: sum
+		sourceColumn: patient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: 141a034e-a9ce-4575-8f02-44c78aec864d
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column sex
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a76c9fb-55cd-4ede-b83c-1c96b070b3d9
+		summarizeBy: sum
+		sourceColumn: sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column cp
+		dataType: int64
+		formatString: 0
+		lineageTag: 41cfaaec-3734-4a2c-9ce1-1f4f27043692
+		summarizeBy: sum
+		sourceColumn: cp
+
+		annotation SummarizationSetBy = Automatic
+
+	column trestbps
+		dataType: int64
+		formatString: 0
+		lineageTag: c2fdc0c9-6619-48fc-84f8-c993ac18a963
+		summarizeBy: sum
+		sourceColumn: trestbps
+
+		annotation SummarizationSetBy = Automatic
+
+	column chol
+		dataType: int64
+		formatString: 0
+		lineageTag: c87189ad-6a81-47e6-91e8-ad2e41cb3383
+		summarizeBy: sum
+		sourceColumn: chol
+
+		annotation SummarizationSetBy = Automatic
+
+	column fbs
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f7c1034-ef0b-4641-aeb6-ebaf8eaf0177
+		summarizeBy: sum
+		sourceColumn: fbs
+
+		annotation SummarizationSetBy = Automatic
+
+	column restecg
+		dataType: int64
+		formatString: 0
+		lineageTag: 8967306d-6d26-4baf-bf34-de877c83b5a5
+		summarizeBy: sum
+		sourceColumn: restecg
+
+		annotation SummarizationSetBy = Automatic
+
+	column thalach
+		dataType: int64
+		formatString: 0
+		lineageTag: edd41040-acd5-4386-8f29-899221de3822
+		summarizeBy: sum
+		sourceColumn: thalach
+
+		annotation SummarizationSetBy = Automatic
+
+	column exang
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c83a3df-1a70-4582-a3af-b7d0632f37a1
+		summarizeBy: sum
+		sourceColumn: exang
+
+		annotation SummarizationSetBy = Automatic
+
+	column oldpeak
+		dataType: double
+		lineageTag: b350e4ff-0967-4bcc-8b34-a5c72a8f61cb
+		summarizeBy: sum
+		sourceColumn: oldpeak
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column slope
+		dataType: int64
+		formatString: 0
+		lineageTag: 7406a402-5427-464a-a114-001c6948bc70
+		summarizeBy: sum
+		sourceColumn: slope
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca
+		dataType: int64
+		formatString: 0
+		lineageTag: c93a3030-52de-4989-a892-aece2a7d88e0
+		summarizeBy: sum
+		sourceColumn: ca
+
+		annotation SummarizationSetBy = Automatic
+
+	column thal
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ef58d40-6ffb-4644-8500-5a27696632a7
+		summarizeBy: sum
+		sourceColumn: thal
+
+		annotation SummarizationSetBy = Automatic
+
+	column diagnosis_num
+		dataType: int64
+		formatString: 0
+		lineageTag: ed9de0f9-a40e-4346-9a92-4425a95b9b13
+		summarizeBy: sum
+		sourceColumn: diagnosis_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: e0e69b97-3fe3-40e2-882a-e577f95b61ea
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column heart_disease
+		dataType: int64
+		formatString: 0
+		lineageTag: f4939837-85c8-4833-8abb-b274307ff63e
+		summarizeBy: sum
+		sourceColumn: heart_disease
+
+		annotation SummarizationSetBy = Automatic
+
+	column sex_label
+		dataType: string
+		lineageTag: 0ce72605-30f6-473f-9a5f-28e6474bcdbc
+		summarizeBy: none
+		sourceColumn: sex_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column cp_label
+		dataType: string
+		lineageTag: 120209ba-a229-4f5d-a6eb-c42d599a279c
+		summarizeBy: none
+		sourceColumn: cp_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column heart_disease_label
+		dataType: string
+		lineageTag: db1fae88-1d6d-41f2-b6fb-d58e88e6731b
+		summarizeBy: none
+		sourceColumn: heart_disease_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_group
+		dataType: string
+		lineageTag: f2b32078-5e0f-4656-b8d4-5d4d07f5cb5a
+		summarizeBy: none
+		sourceColumn: age_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column fbs_label
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 40f39620-61f5-42f2-b8af-2817cfa0cd70
+		summarizeBy: none
+		sourceColumn: fbs_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column restecg_label
+		dataType: string
+		lineageTag: e306f345-221c-45f6-9dec-c9cb512e5d83
+		summarizeBy: none
+		sourceColumn: restecg_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column exang_label
+		dataType: string
+		lineageTag: e2f853dc-db2c-4c7c-9fdf-c685b049b346
+		summarizeBy: none
+		sourceColumn: exang_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column slope_label
+		dataType: string
+		lineageTag: c5de2772-d95a-4d3d-967c-516901a200b7
+		summarizeBy: none
+		sourceColumn: slope_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column thal_label
+		dataType: string
+		lineageTag: 0a4f5678-d5d6-4d49-85c5-e8bf38905d80
+		summarizeBy: none
+		sourceColumn: thal_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK(Patients[age]), 4,
+			    Patients[age] <= 40, 1,
+			    Patients[age] <= 55, 2,
+			    3
+			)
+		formatString: 0
+		lineageTag: 5aa1be01-1a46-4f19-8466-d3168f3f8039
+		summarizeBy: sum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Patients = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(AnalysisDataFolder & "\powerbi_patients.csv"),[Delimiter=",", Columns=26, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"patient_id", Int64.Type}, {"age", Int64.Type}, {"sex", Int64.Type}, {"cp", Int64.Type}, {"trestbps", Int64.Type}, {"chol", Int64.Type}, {"fbs", Int64.Type}, {"restecg", Int64.Type}, {"thalach", Int64.Type}, {"exang", Int64.Type}, {"oldpeak", type number}, {"slope", Int64.Type}, {"ca", Int64.Type}, {"thal", Int64.Type}, {"diagnosis_num", Int64.Type}, {"source", type text}, {"heart_disease", Int64.Type}, {"sex_label", type text}, {"cp_label", type text}, {"heart_disease_label", type text}, {"age_group", type text}, {"fbs_label", type logical}, {"restecg_label", type text}, {"exang_label", type text}, {"slope_label", type text}, {"thal_label", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

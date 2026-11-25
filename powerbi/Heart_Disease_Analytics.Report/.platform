@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Heart_Disease_Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "46ad4eee-eea5-4374-ab2d-f5f45ce3a9fe"
+  }
+}
